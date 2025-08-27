@@ -1,0 +1,16 @@
+.game-wrap { display: grid; place-items: center; gap: 16px; }
+.arena {
+  width: min(92vw, 560px); height: 280px;
+  border-radius: 20px; border: 1px solid rgba(255,255,255,.08);
+  background: var(--card-gradient), var(--surface);
+  display: grid; place-items: center; text-align: center; position: relative;
+  box-shadow: 0 10px 25px rgba(0,0,0,.35);
+}
+.prompt { font-size: 18px; color: var(--muted); }
+.time { font-size: 36px; font-weight: 700; margin-top: 6px; }
+.panel { display:flex; gap: 10px; justify-content: center; align-items: center; margin-top: 10px; }
+.ready { background: linear-gradient(135deg, rgba(255, 217, 0, .12), transparent), var(--surface); }
+.go { background: linear-gradient(135deg, rgba(0, 200, 83, .15), transparent), var(--surface); }
+
+.loader { width: 40px; height: 40px; border-radius: 50%; border: 3px solid rgba(255,255,255,.15); border-top-color: var(--primary); animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }

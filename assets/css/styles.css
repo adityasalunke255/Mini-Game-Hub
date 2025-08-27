@@ -1,0 +1,152 @@
+/* Base Theme */
+:root {
+  --bg: #0b0f17;
+  --surface: #121826;
+  --text: #e6edff;
+  --muted: #9bb0d1;
+  --card-gradient: linear-gradient(135deg, rgba(0,204,255,0.08), rgba(155, 89, 182, 0.08));
+  --primary: #6be7ff;
+  --accent: #a78bfa;
+  --accent-2: #ff9f6b;
+  --good: #7ef6a0;
+  --shadow: 0 10px 25px rgba(0,0,0,0.45);
+}
+
+html[data-theme="light"] {
+  --bg: #f6f8ff;
+  --surface: #ffffff;
+  --text: #141a2e;
+  --muted: #5b6b8d;
+  --card-gradient: linear-gradient(135deg, rgba(0, 140, 255, 0.08), rgba(255, 159, 107, 0.08));
+  --primary: #0077ff;
+  --accent: #7c3aed;
+  --accent-2: #ff6b35;
+  --good: #00c853;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  background: radial-gradient(1000px 600px at 10% 10%, rgba(105, 213, 255, 0.08), transparent 60%),
+              radial-gradient(900px 500px at 90% 0%, rgba(167, 139, 250, 0.08), transparent 60%),
+              var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+#particles { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+.page-fade { position: fixed; inset: 0; background: var(--bg); z-index: 50; opacity: 0; pointer-events: none; }
+
+/* Nav */
+.nav {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between;
+  backdrop-filter: blur(10px);
+  background: linear-gradient(180deg, rgba(18,24,38,0.8), rgba(18,24,38,0.4));
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 10px 16px;
+}
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: .3px; }
+.brand .logo { font-size: 22px; filter: drop-shadow(0 0 10px rgba(107,231,255,.5)); }
+.brand .title { font-size: 18px; }
+
+.nav-actions { display: flex; align-items: center; gap: 12px; }
+.filters { display: flex; gap: 8px; flex-wrap: wrap; }
+.search { display: flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 14px; border: 1px solid rgba(255,255,255,.12); background: rgba(0,0,0,.12); }
+.search input { background: transparent; border: none; color: var(--text); outline: none; width: 160px; }
+.search input::placeholder { color: var(--muted); }
+
+/* Buttons */
+.btn, .chip {
+  position: relative; border: 1px solid rgba(255,255,255,0.12);
+  background: var(--surface); color: var(--text);
+  padding: 8px 14px; border-radius: 14px; cursor: pointer;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+  box-shadow: 0 1px 1px rgba(0,0,0,.15);
+}
+.btn:hover, .chip:hover { transform: translateY(-1px); border-color: rgba(255,255,255,0.25); }
+.btn.ghost { background: transparent; }
+.chip.active { border-color: var(--accent); box-shadow: 0 0 0 2px color-mix(in oklab, var(--accent) 60%, transparent); }
+
+/* Focus visibility */
+:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 12px; }
+
+/* Container & Grid */
+.container { padding: 18px 16px 40px; position: relative; z-index: 1; }
+.grid {
+  display: grid; gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (min-width: 640px) {
+  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) {
+  .grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+
+/* Card */
+.card { perspective: 1000px; }
+.card-inner {
+  position: relative; transform-style: preserve-3d;
+  transition: transform .6s cubic-bezier(.2,.8,.2,1), filter .3s ease;
+}
+.card:hover .card-inner { filter: drop-shadow(0 12px 30px rgba(107,231,255,.25)); }
+.card.flipped .card-inner { transform: rotateY(180deg); }
+
+.card-face {
+  position: relative; height: 180px; border-radius: 16px; overflow: hidden;
+  background: var(--card-gradient), var(--surface);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: var(--shadow);
+  padding: 14px; display: flex; flex-direction: column; justify-content: space-between;
+  transform: translateZ(0);
+}
+@media (min-width: 768px) { .card-face { height: 200px; } }
+.card-back { position: absolute; inset: 0; backface-visibility: hidden; transform: rotateY(180deg); }
+
+.icon { font-size: 28px; }
+.title { font-weight: 600; margin: 8px 0 2px; }
+.subtitle { font-size: 12px; color: var(--muted); }
+.score { font-size: 13px; color: var(--good); }
+
+.card-actions { display: flex; gap: 8px; }
+.card .btn { padding: 6px 10px; border-radius: 12px; font-size: 12px; }
+
+/* Drawer Leaderboard */
+.drawer {
+  position: fixed; right: -400px; top: 0; height: 100vh; width: 340px; max-width: 85vw;
+  background: var(--surface); border-left: 1px solid rgba(255,255,255,.08);
+  box-shadow: -10px 0 30px rgba(0,0,0,.4); z-index: 20; padding: 14px;
+}
+.drawer-header { display: flex; align-items: center; justify-content: space-between; }
+.leaderboard-list { margin: 10px 0 0; padding: 0 8px; }
+.leaderboard-list li { margin: 8px 0; padding: 10px; border-radius: 10px; background: rgba(255,255,255,.03); display: flex; justify-content: space-between; }
+
+/* Ripple base */
+.ripple { position: absolute; border-radius: 50%; transform: scale(0); animation: ripple .6s ease-out; background: color-mix(in oklab, var(--primary) 70%, white 15%); opacity: .5; pointer-events: none; }
+@keyframes ripple { to { transform: scale(4); opacity: 0; } }
+
+/* Utilities */
+.hidden { display: none !important; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+
+/* Centered Modal (Help/Instructions) */
+.modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 40; display: none; }
+.modal { position: fixed; inset: 0; display: none; place-items: center; z-index: 41; pointer-events: none; }
+.modal .panel {
+  pointer-events: auto; width: min(90vw, 520px); max-height: 80vh; overflow: auto;
+  background: var(--surface); border: 1px solid rgba(255,255,255,.08); border-radius: 16px; box-shadow: var(--shadow);
+  padding: 16px; backdrop-filter: blur(6px);
+}
+.modal .panel h3 { margin: 0 0 8px; }
+.modal .panel p { margin: 8px 0; color: var(--muted); }
+.modal .panel ul { margin: 8px 0 0 18px; }
+.modal .panel .actions { display: flex; justify-content: flex-end; margin-top: 12px; }
+.modal.show { display: grid; }
+.modal.show + .modal-backdrop { display: block; }

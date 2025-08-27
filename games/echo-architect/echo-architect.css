@@ -1,0 +1,9 @@
+.game-wrap { display:grid; place-items:center; gap: 12px; }
+.hint { color: var(--muted); font-size: 12px; text-align: center; }
+.ea-canvas { width: min(96vw, 720px); height: auto; border-radius: 18px; border: 1px solid rgba(255,255,255,.08); background: radial-gradient(800px 600px at 50% 50%, rgba(255,255,255,.03), transparent), var(--surface); box-shadow: 0 10px 25px rgba(0,0,0,.35); }
+.loader { width: 40px; height: 40px; border-radius: 50%; border: 3px solid rgba(255,255,255,.15); border-top-color: var(--accent); animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.hud { display:flex; gap:12px; align-items:center; }
+.controls { display:flex; gap:14px; align-items:center; justify-content:center; margin-top: 8px; flex-wrap: wrap; }
+.controls label { display:flex; gap:6px; align-items:center; }
+.board-wrap { display:grid; justify-items:center; }

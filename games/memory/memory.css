@@ -1,0 +1,27 @@
+.game-wrap { display: grid; place-items: center; gap: 16px; }
+.mem-grid {
+  display: grid; grid-template-columns: repeat(4, 70px); grid-template-rows: repeat(4, 70px);
+  gap: 10px; padding: 10px; background: rgba(255,255,255,.03); border-radius: 16px; border: 1px solid rgba(255,255,255,.08);
+}
+.cardc {
+  width: 70px; height: 70px; display: grid; place-items: center; font-size: 28px; font-weight: 700;
+  border-radius: 14px; background: var(--card-gradient), var(--surface); cursor: pointer; user-select: none;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+  position: relative; perspective: 600px; overflow: hidden;
+}
+.cardc.revealed { box-shadow: 0 0 0 2px var(--primary), 0 10px 25px rgba(0,0,0,.35); }
+.cardc.matched { box-shadow: 0 0 0 2px var(--good); opacity: 0.9; }
+.face { position: absolute; inset: 0; display:grid; place-items:center; backface-visibility: hidden; }
+.front { transform: rotateY(0deg); }
+.back { transform: rotateY(180deg); font-size: 28px; }
+.flipper { position:absolute; inset:0; transform-style:preserve-3d; transition: transform .38s ease; }
+.cardc.reveal .flipper { transform: rotateY(180deg); }
+
+.panel { display: flex; gap: 10px; align-items: center; }
+.loader { width: 40px; height: 40px; border-radius: 50%; border: 3px solid rgba(255,255,255,.15); border-top-color: var(--accent); animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@media (min-width: 768px) {
+  .mem-grid { grid-template-columns: repeat(4, 90px); grid-template-rows: repeat(4, 90px); }
+  .cardc { width: 90px; height: 90px; font-size: 32px; }
+}

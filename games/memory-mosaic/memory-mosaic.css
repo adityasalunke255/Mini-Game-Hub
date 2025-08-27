@@ -1,0 +1,10 @@
+.game-wrap{display:grid;place-items:center;gap:12px}
+.stage{position:relative;width:min(96vw,720px);height:480px;border-radius:18px;border:1px solid rgba(255,255,255,.08);background:radial-gradient(800px 600px at 60% 40%, rgba(255,255,255,.03), transparent),var(--surface);box-shadow:0 10px 25px rgba(0,0,0,.35);overflow:hidden}
+.silhouette{position:absolute;inset:0;display:grid;place-items:center;opacity:.25;filter:drop-shadow(0 0 6px rgba(255,255,255,.1))}
+.piece{position:absolute;width:80px;height:80px;border-radius:14px;background:linear-gradient(135deg, rgba(107,231,255,.25), rgba(167,139,250,.25));border:1px solid rgba(255,255,255,.18);display:grid;place-items:center;font-weight:700;color:#fff;cursor:grab;user-select:none;touch-action:none;box-shadow:0 10px 25px rgba(0,0,0,.25);transition:transform .15s ease}
+.piece:active{cursor:grabbing}
+.piece.snapped{background:linear-gradient(135deg, rgba(74,222,128,.3), rgba(167,139,250,.25));box-shadow:0 0 0 2px #4ade80, 0 10px 25px rgba(0,0,0,.35)}
+.hint{color:var(--muted);font-size:12px}
+.loader{width:40px;height:40px;border-radius:50%;border:3px solid rgba(255,255,255,.15);border-top-color:var(--accent);animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.panel{display:flex;gap:10px;align-items:center;flex-wrap:wrap}

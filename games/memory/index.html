@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Memory Flip • Mini Game Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/styles.css" />
+  <link rel="stylesheet" href="memory.css" />
+</head>
+<body>
+  <div id="particles"></div>
+
+  <header class="nav" role="navigation" aria-label="Game">
+    <div class="brand">
+      <a class="btn ghost" href="../../index.html">← Back</a>
+      <span class="title">Memory Flip</span>
+    </div>
+    <nav class="nav-actions">
+      <button id="themeToggle" class="btn ghost" aria-label="Toggle theme">🌙</button>
+      <button id="helpBtn" class="btn ghost" aria-label="How to play">Help</button>
+      <button id="viewLB" class="btn">Leaderboard</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="game-wrap">
+      <div id="loader" class="loader"></div>
+      <div id="board" class="mem-grid hidden" aria-label="Memory board" role="grid"></div>
+      <div class="panel">
+        <div>Moves: <strong id="moves">0</strong></div>
+        <button id="reset" class="btn">Reset</button>
+      </div>
+    </section>
+  </main>
+
+  <div id="leaderboardDrawer" class="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" aria-hidden="true" tabindex="-1">
+    <div class="drawer-header">
+      <h3 id="drawerTitle">Leaderboard</h3>
+      <button class="btn ghost close-drawer" aria-label="Close">✖</button>
+    </div>
+    <ol id="drawerList" class="leaderboard-list"></ol>
+  </div>
+
+  <div id="pageFade" class="page-fade"></div>
+
+  <!-- Help Modal -->
+  <div id="helpModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="helpTitle">
+    <div class="panel">
+      <h3 id="helpTitle">How to Play — Memory Flip</h3>
+      <p>Flip cards to find matching pairs. Clear the board in the fewest moves.</p>
+      <ul>
+        <li>Click or press Enter/Space on a card to flip.</li>
+        <li>Two flipped cards that match are locked in.</li>
+        <li>Fewer moves yields a higher score.</li>
+      </ul>
+      <div class="actions"><button class="btn close-help">Got it</button></div>
+    </div>
+  </div>
+  <div id="helpBackdrop" class="modal-backdrop" aria-hidden="true"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.7.1/tsparticles.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <script type="module" src="memory.js"></script>
+</body>
+</html>
